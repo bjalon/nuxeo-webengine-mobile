@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 1
+Bundle-Name: Nuxeo Webengine MOBILE
+Bundle-SymbolicName: org.nuxeo.webengine.mobile;singleton=true
+Bundle-Localization: plugin
+Bundle-Version: 1.0.0
+Bundle-Vendor: Nuxeo
+Require-Bundle: org.nuxeo.ecm.webengine.core
+Nuxeo-Component: OSGI-INF/mobile-authentication-contrib.xml,
+ OSGI-INF/mobile-pageproviders-contrib.xml,
+ OSGI-INF/mobile-core-types-contrib.xml,
+ OSGI-INF/mobile-lifecycle-contrib.xml,
+ OSGI-INF/mobile-ecm-types-contrib.xml

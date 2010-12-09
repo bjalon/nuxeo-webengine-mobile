@@ -1,0 +1,23 @@
+.displayedDeleteButton {
+  float: right;
+  margin: -4px 10px -8px -10px;
+  padding: 4px 4px 4px 4px;
+  background-image: red;
+  color: white;
+  -webkit-border-radius: 8px;
+  font-size: 16px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  background-color: red;
+}
+
+.hiddenDeleteButton {
+  display: none;
+}
+
+.displayedDeleteButton + a.removable {
+  clear: left;
+  margin-right: 100px;
+  background: none;
+}

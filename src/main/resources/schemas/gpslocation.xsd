@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<xs:schema
+  targetNamespace="http://www.nuxeo.org/mobile/schemas/gpslocation/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:nxs="http://www.nuxeo.org/mobile/schemas/gpslocation/">
+
+  <xs:element name="latitude" type="xs:string"/>
+  <xs:element name="longitude" type="xs:string"/>
+  <xs:element name="heading" type="xs:string"/>
+  <xs:element name="speed" type="xs:string"/>
+  <xs:element name="altitude" type="xs:string"/>
+
+</xs:schema>
+
+

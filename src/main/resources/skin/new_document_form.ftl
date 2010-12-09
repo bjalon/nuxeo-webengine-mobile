@@ -1,0 +1,27 @@
+    <form title="Create" class="panel">
+      <script>cleanFormValuesOnBlur()</script>
+      <fieldset>
+        <div class="row">
+          <label>Document Type</label>
+          <select id="${parentId}_doctypeselect" name="doctype" class="panel">
+            <#list docTypes as docType>
+            <option value='${docType}'>${docType}</option>
+            </#list>
+          </select>
+        </div>
+        <div class="row">
+          <label>Title</label>
+          <input name="dc-title" type="text" value="Set title"/>
+        </div>
+        <div class="row">
+          <label>Description</label>
+          <textarea name="dc-description" rows="15"></textarea>
+        </div>
+        <div class="row">
+          <label>Issued date</label>
+          <input name="dc-issued" class="date future today" value="Today">
+        </div>
+      </fieldset>
+      <div class="whiteButton" onClick="nxPostDocumentFormAndGoBack('${parentId}')">Create</div>
+      <input type="hidden" name="TbBModHIDE_help" value="true" />
+    </form>

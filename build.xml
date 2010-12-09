@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="nuxeo-webengine-mobile" default="web">
+    <description>
+            Tasks for freemarker resources hot relaod
+    </description>
+
+  <property file="build.properties"/>
+
+  <property name="app-deployed-location" location="${tomcat.location}/nxserver/web/root.war/modules/org.nuxeo.webengine.mobile"/>
+  <property name="nuxeo.war" location="${tomcat.location}/nxserver/nuxeo.war"/>
+  <property name="bundles-location" location="${tomcat.location}/nxserver/bundles"/>
+  <property name="version" value="0.2-SNAPSHOT"/>
+
+  <target name="web" description="Deploy freemarker resources into the runnning server">
+    <echo>copy to ${app-deployed-location}/skin</echo>
+    <copy todir="${app-deployed-location}/skin">
+      <fileset dir="src/main/resources/skin/"/>
+    </copy>
+
+    <echo>copy to ${nuxeo.war}</echo>
+    <copy todir="${nuxeo.war}/">
+       <fileset dir="src/main/resources/web/nuxeo.war/"/>
+     </copy>
+  </target>
+
+  <target name="install">
+      <exec executable="mvn">
+        <arg value="clean"/>
+        <arg value="install"/>
+        <arg value="-o"/>
+      </exec>
+  </target>
+
+    <target name="deploy" depends="install" description="Deploy project into the server">
+        <copy todir="${bundles-location}" file="target/nuxeo-webengine-mobile-${version}.jar"/>
+    </target>
+
+</project>

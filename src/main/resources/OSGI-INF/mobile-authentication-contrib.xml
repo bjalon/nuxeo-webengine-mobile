@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.webengine.mobile.authenticator.contrib">
+
+  <require>org.nuxeo.ecm.platform.ui.web.auth.defaultConfig</require>
+
+  <extension
+      target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService"
+      point="authenticators">
+
+    <authenticationPlugin name="FORM_MOBILE_AUTH" enabled="true"
+        class="org.nuxeo.webengine.mobile.authenticator.MobileFormAuthenticator">
+      <needStartingURLSaving>false</needStartingURLSaving>
+      <parameters>
+        <parameter name="LoginPage">login-mobile.jsp</parameter>
+        <parameter name="UsernameKey">user_name</parameter>
+        <parameter name="PasswordKey">user_password</parameter>
+      </parameters>
+    </authenticationPlugin>
+
+  </extension>
+
+  <extension
+      target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService"
+      point="specificChains">
+
+    <specificAuthenticationChain name="mobile">
+        <headers>
+            <header name="User-Agent">(.*)Mobile(.*)Safari(.*)</header>
+            <header name="User-Agent">(.*)AppleWebKit(.*)Mobile(.*)</header>
+        </headers>
+
+        <replacementChain>
+            <plugin>FORM_MOBILE_AUTH</plugin>
+        </replacementChain>
+    </specificAuthenticationChain>
+
+  </extension>
+
+</component>
