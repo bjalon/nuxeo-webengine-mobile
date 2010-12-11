@@ -67,6 +67,16 @@ public class MobileApplication extends ModuleRoot {
         return newObject("workflow");
     }
 
+    @Path("comments")
+    public Object doGetComments() throws Exception {
+        return newObject("comments");
+    }
+
+    @Path("annotations")
+    public Object doGetAnnotations() throws Exception {
+        return newObject("annotations");
+    }
+
     @Path("@@login")
     @GET
     public Object doLogin() throws Exception {
