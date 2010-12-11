@@ -1,4 +1,4 @@
-    <div id="${Document.id}_preview" title="preview"  class="panel">
+    <div id="${Document.id}_preview" title="Preview"  class="panel">
       <iframe src="${This.getPreviewURL()}" frameborder="1" width="100%" scrolling="auto" id="preview-frame">
       </iframe>
       <form>

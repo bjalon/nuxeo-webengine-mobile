@@ -11,7 +11,7 @@ public class PreviewService extends DefaultAdapter {
 
     @GET
     public Object doGet() throws PreviewException {
-            return getTemplate("preview/preview.ftl");
+            return getTemplate("preview/document_preview.ftl");
     }
 
 }
