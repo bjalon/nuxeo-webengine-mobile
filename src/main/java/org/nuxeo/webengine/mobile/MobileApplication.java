@@ -77,6 +77,11 @@ public class MobileApplication extends ModuleRoot {
         return newObject("annotations");
     }
 
+    @Path("relations")
+    public Object doGetRelations() throws Exception {
+        return newObject("relations");
+    }
+
     @Path("@@login")
     @GET
     public Object doLogin() throws Exception {

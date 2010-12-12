@@ -31,11 +31,11 @@
   </form>
 
   <ul>
-    <#if Document.file.filename != null && This.hasPreview()>
     <li class="nxDocumentItem">
-      <a href="${basePath}/mobile/navigation/byId/${Document.id}/@preview">Preview</a>
+      <a href="${basePath}/mobile/relations/${Document.id}">
+        Relations
+      </a>
     </li>
-    </#if>
     <li class="nxDocumentItem">
       <a href="${basePath}/mobile/comments/${Document.id}">
         Comments
@@ -46,5 +46,10 @@
         Annotations
       </a>
     </li>
+    <#if Document.file.filename != null && This.hasPreview()>
+    <li class="nxDocumentItem">
+      <a href="${basePath}/mobile/navigation/byId/${Document.id}/@preview">Preview</a>
+    </li>
+    </#if>
   </ul>
 </div>
