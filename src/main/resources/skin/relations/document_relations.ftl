@@ -1,8 +1,7 @@
-<div title="Relations"  class="panel">
-  <h2>Outgoing relations</h2>
-  <div>
+<ul title="Relations">
+  <li class="group">Outgoing relations</li>
     <#list outgoingStatements as outgoingStatement>
-    <div>
+    <li class="relation">
       ${Context.getMessage(This.getPredicateLabel("predicates", outgoingStatement))}
 
       <#assign node = outgoingStatement.objectInfo />
@@ -38,17 +37,15 @@
       <#if node.literal>
         ${node.title}
       </#if>
-    </div>
+    </li>
     </#list>
     <#if outgoingStatements?size ==0>
-      <div>No outgoing relation</div>
+      <li class="relation">No outgoing relation</li>
     </#if>
-    </div>
 
-    <h2>Incoming relations</h2>
-    <div>
+    <li class="group">Incoming relations</li>
     <#list incomingStatements as incomingStatement>
-    <div>
+    <li class="relation">
       ${Context.getMessage(This.getPredicateLabel("inverse_predicates", incomingStatement))}
 
       <#assign node = incomingStatement.objectInfo />
@@ -84,10 +81,9 @@
       <#if node.literal>
         ${node.title}
       </#if>
-    </div>
+    </li>
     </#list>
     <#if incomingStatements?size == 0>
-      <div>No incoming relation</div>
+      <li class="relation">No incoming relation</li>
     </#if>
-  </div>
-</div>
+</ul>

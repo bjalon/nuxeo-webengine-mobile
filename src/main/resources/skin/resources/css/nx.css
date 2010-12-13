@@ -21,3 +21,16 @@
   margin-right: 100px;
   background: none;
 }
+
+.relation {
+  font-size: 16px;
+	font-weight: normal;
+}
+
+.relation a {
+  background: none;
+	display: inline;
+	margin: 0, 0, 0, 0;
+	padding: 0, 0, 0, 0;
+	text-decoration: underline;
+}
