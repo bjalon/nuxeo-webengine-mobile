@@ -3,11 +3,11 @@
     There is no comment
   </#if>
   <#list comments as comment>
-  <li class="nxDocumentItem">
-    <div>
+  <li class="comment">
+    <div class="commentHeader">
       ${comment.comment.creationDate} - ${comment.comment.author} wrote:
     </div>
-    <div>${comment.comment.text}</div>
+    <div class="commentText">${comment.comment.text}</div>
   </li>
   </#list>
 </ul>
