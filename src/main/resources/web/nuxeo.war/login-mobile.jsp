@@ -37,7 +37,7 @@
     <div id="about" title="About" class="panel" class="toolbar">
       <h2><%=productName%> - <%=productVersion%></h2>
     </div>
-    <form id="login" class="panel" title="<%=productName%>" method="post" action="site/mobile/home" target="_self" selected="true">
+    <form id="login" class="panel" title="<%=productName%>" method="post" action="site/mobile/home?initialURLRequested=<%= request.getParameter("initialURLRequested") %>" target="_self" selected="true">
       <fieldset>
         <div class="row">
           <label for="username">

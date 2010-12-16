@@ -43,6 +43,8 @@ public class MobileFormAuthenticator extends FormAuthenticator {
             String homePage = baseURL + MOBILE_HOME_PAGE;
             parameters.put(NXAuthConstants.REQUESTED_URL,
                     URLEncoder.encode(baseURL + MOBILE_HOME_PAGE, "UTF-8"));
+            parameters.put("initialURLRequested", httpRequest.getRequestURL().toString());
+            log.error("initialURLRequested is " + httpRequest.getRequestURL().toString());
             String loginError = (String) httpRequest.getAttribute(LOGIN_ERROR);
             if (loginError != null) {
                 if (ERROR_USERNAME_MISSING.equals(loginError)) {

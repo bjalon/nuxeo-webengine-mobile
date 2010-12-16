@@ -21,9 +21,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
+import org.nuxeo.ecm.core.api.IdRef;
 import org.nuxeo.ecm.webengine.WebException;
 import org.nuxeo.ecm.webengine.model.WebObject;
 import org.nuxeo.ecm.webengine.model.exceptions.WebSecurityException;
@@ -41,14 +43,57 @@ public class MobileApplication extends ModuleRoot {
 
     @GET
     @Path("home")
-    public Object doGoHomePage() throws Exception {
+    public Object doGoHomePage(
+            @QueryParam("initialURLRequested") String initialURLRequested)
+            throws Exception {
+        if (isUrlRequestDocument(initialURLRequested)) {
+            return doGetMobileURL(initialURLRequested);
+        }
         return getTemplate("index.ftl");
+    }
+
+    protected Object doGetMobileURL(String initialURLRequested) {
+        if (initialURLRequested.contains("/nxpath/")) {
+            int index_start = initialURLRequested.indexOf("nxpath");
+            String path = initialURLRequested.substring(index_start + "nxpath/default".length());
+            int index_end = path.indexOf("@");
+            path = path.substring(0, index_end);
+            return getTemplate("index_with_doc.ftl").arg("Document", new MobileDocument(getContext(), path));
+        }
+
+        if (initialURLRequested.contains("/nxdoc/")) {
+            int index_start = initialURLRequested.indexOf("nxdoc/");
+            String id = initialURLRequested.substring(index_start + "nxdoc/default/".length());
+            int index_end = id.indexOf("/");
+            id = id.substring(0, index_end);
+            return getTemplate("index_with_doc.ftl").arg("Document", new MobileDocument(getContext(), new IdRef(id)));
+        }
+        return getTemplate("index.ftl");
+    }
+
+    protected boolean isUrlRequestDocument(String initialURLRequested) {
+        if (initialURLRequested == null) {
+            return false;
+        }
+
+        if (initialURLRequested.contains("nxpath")) {
+            return true;
+        }
+
+        if (initialURLRequested.contains("nxdoc")) {
+            return true;
+        }
+        return false;
     }
 
     @POST
     @Path("home")
-    public Object doGoHomePagePost() throws Exception {
-        // if you come from login-mobile.jsp page
+    public Object doGoHomePagePost(
+            @QueryParam("initialURLRequested") String initialURLRequested)
+            throws Exception {
+        if (isUrlRequestDocument(initialURLRequested)) {
+            return doGetMobileURL(initialURLRequested);
+        }
         return getTemplate("index.ftl");
     }
 
