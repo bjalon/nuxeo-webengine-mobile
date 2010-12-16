@@ -764,6 +764,7 @@ function showForm(form)
 function cancelDialog(form)
 {
   form.removeAttribute("selected");
+  iui.busy = false;
 }
 
 function updatePage(page, fromPage)

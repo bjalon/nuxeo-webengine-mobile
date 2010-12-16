@@ -36,3 +36,9 @@ textarea {
   padding: 0, 0, 0, 0;
   text-decoration: underline;
 }
+
+.previewButton {
+  background-color: white;
+  text-align: center;
+  font-size: 100px;
+}

@@ -1,7 +1,5 @@
-    <div id="${Document.id}_preview" title="Preview"  class="panel">
-      <iframe src="${This.getPreviewURL()}" frameborder="1" width="100%" scrolling="auto" id="preview-frame">
-      </iframe>
-      <form>
-        <input type="hidden" name="TbBModHIDE_help" value="true" />
-      </form>
-    <div>
+  <form id="_${Document.id}_preview" class="dialog">
+    <a class="previewButton" type="cancel">Fermer</a>
+    <iframe src="${This.getPreviewURL()}" frameborder="1" width="100%" scrolling="auto" class="preview">
+    </iframe>
+  <form>
