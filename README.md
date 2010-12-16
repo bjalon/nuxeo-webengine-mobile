@@ -11,8 +11,8 @@ The application is based on the [iPhone User Interface](http://code.google.com/p
 Building and deploying
 ======================
 
-Using `ant` 
------------
+Using ant 
+---------
 
 Download the latest Nuxeo DM 5.4.1-SNAPSHOT Tomcat distribution from [here](http://www.nuxeo.org/static/snapshots/).
 
