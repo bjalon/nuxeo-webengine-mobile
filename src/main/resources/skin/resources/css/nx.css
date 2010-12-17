@@ -14,7 +14,7 @@
   display: none;
 }
 
-.displayedDeleteButton + a.removable {
+.displayedDeleteButton+a.removable {
   clear: left;
   margin-right: 100px;
   background: none;
@@ -24,6 +24,7 @@
   font-size: 16px;
   font-weight: normal;
 }
+
 textarea {
   border: none;
   background: 0 none;
@@ -38,44 +39,46 @@ textarea {
 }
 
 .popupToolBar {
-border-top: 1px solid #cdd5df;
-border-bottom: 1px solid #2D3642;
-padding: 0px 10px 10px;
-background:-webkit-gradient(linear,left bottom,left top,color-stop(0.47, rgb(109,132,162)),color-stop(0, rgb(136,155,179)),color-stop(0.8, rgb(176,188,205)));;
-height: 130px;
-width: 892px;
+  border-top: 1px solid #cdd5df;
+  border-bottom: 1px solid #2D3642;
+  padding: 0px 10px 10px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.47, rgb(109
+    , 132, 162) ), color-stop(0, rgb(136, 155, 179) ),
+    color-stop(0.8, rgb(176, 188, 205) ) );
+  height: 130px;
+  width: 892px;
 }
 
 .popupTitle {
-color: white;
-font-size: 75px;
-font-weight: bold;
-left: 40%;
-margin: 1px 0px 0px -75px;
-overflow: hidden;
-padding-top: 10px;
-position: absolute;
-text-align: center;
-text-overflow: ellipsis;
-text-shadow: rgba(0, 0, 0, 0.398438) 0px -1px 0px;
-white-space: nowrap;
+  color: white;
+  font-size: 75px;
+  font-weight: bold;
+  left: 40%;
+  margin: 1px 0px 0px -75px;
+  overflow: hidden;
+  padding-top: 10px;
+  position: absolute;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: rgba(0, 0, 0, 0.398438) 0px -1px 0px;
+  white-space: nowrap;
 }
 
 .popupButton {
--webkit-border-image: url(toolButton.png) 0 5 0 5 stretch stretch;
-border-width: 0px 5px;
-color: white;
-font-size: 75px;
-font-weight: bold;
-margin: 0px;
-overflow: hidden;
-padding: 0px 3px;
-position: absolute;
-left: 610px;
-text-decoration: none;
-text-overflow: ellipsis;
-text-shadow: rgba(0, 0, 0, 0.597656) 0px -1px 0px;
-top: 8px;
-white-space: nowrap;
-width: auto;
+  -webkit-border-image: url(toolButton.png) 0 5 0 5 stretch stretch;
+  border-width: 0px 5px;
+  color: white;
+  font-size: 75px;
+  font-weight: bold;
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px 3px;
+  position: absolute;
+  left: 610px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-shadow: rgba(0, 0, 0, 0.597656) 0px -1px 0px;
+  top: 8px;
+  white-space: nowrap;
+  width: auto;
 }
