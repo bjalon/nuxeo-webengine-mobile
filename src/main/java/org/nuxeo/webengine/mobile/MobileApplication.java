@@ -53,20 +53,28 @@ public class MobileApplication extends ModuleRoot {
     }
 
     protected Object doGetMobileURL(String initialURLRequested) {
+        MobileDocument doc = null;
+
         if (initialURLRequested.contains("/nxpath/")) {
             int index_start = initialURLRequested.indexOf("nxpath");
-            String path = initialURLRequested.substring(index_start + "nxpath/default".length());
+            String path = initialURLRequested.substring(index_start
+                    + "nxpath/default".length());
             int index_end = path.indexOf("@");
             path = path.substring(0, index_end);
-            return getTemplate("index_with_doc.ftl").arg("Document", new MobileDocument(getContext(), path));
+            doc = new MobileDocument(getContext(), path);
         }
 
         if (initialURLRequested.contains("/nxdoc/")) {
             int index_start = initialURLRequested.indexOf("nxdoc/");
-            String id = initialURLRequested.substring(index_start + "nxdoc/default/".length());
+            String id = initialURLRequested.substring(index_start
+                    + "nxdoc/default/".length());
             int index_end = id.indexOf("/");
             id = id.substring(0, index_end);
-            return getTemplate("index_with_doc.ftl").arg("Document", new MobileDocument(getContext(), new IdRef(id)));
+            doc = new MobileDocument(getContext(), new IdRef(id));
+        }
+
+        if (doc != null) {
+            return doc.getView("index_with_body");
         }
         return getTemplate("index.ftl");
     }

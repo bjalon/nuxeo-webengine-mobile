@@ -1,4 +1,4 @@
-    <div id="${Document.id}" title="Details"  class="panel">
+    <div id="${Document.id}" title="Details" class="panel">
       <fieldset>
         <div class="row">
           <label>Title</label>
