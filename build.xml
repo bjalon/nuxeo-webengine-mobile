@@ -29,7 +29,7 @@
 
   <target name="build" depends="build-unix,build-windows" />
   <target name="build-unix" if="osfamily-unix">
-    <exec executable="/usr/bin/mvn" failonerror="true">
+    <exec executable="mvn" failonerror="true">
       <arg value="clean" />
       <arg value="install" />
       <arg value="${mvn.opts}" />

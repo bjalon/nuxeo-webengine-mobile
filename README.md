@@ -14,7 +14,7 @@ Building and deploying
 Using ant 
 ---------
 
-Download the latest Nuxeo DM 5.4.1-SNAPSHOT Tomcat distribution from [here](http://www.nuxeo.org/static/snapshots/).
+Download Nuxeo DM 5.4.0.1 Tomcat distribution from [here](http://www.nuxeo.org/static/releases/).
 
 Configure the build.properties files (starting from the build.properties.sample file to be found in the current folder), to point your Tomcat instance::
 
@@ -80,6 +80,7 @@ To avoid redeploying the whole project for each change when working with web fil
     Total time: 0 seconds
 
 You don't need to stop and restart your server when using that target.
+
 
 Build the marketplace package
 =============================

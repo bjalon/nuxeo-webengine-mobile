@@ -28,8 +28,6 @@
     </div>
     <ul id="home" title="Home" selected="true">
       <li><a href="${basePath}/mobile/navigation/root">Navigation</a></li>
-      <li><a href="${basePath}/mobile/search">Saved Searches</a></li>
-      <li><a href="${basePath}/mobile/workflow">Tasks</a></li>
     </ul>
     <div id="about" class="panel" title="About">
       <h2>Nuxeo WebApp application</h2>
