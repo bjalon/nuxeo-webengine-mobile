@@ -1,38 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="nuxeo-webengine-mobile" default="web">
-    <description>
-            Tasks for freemarker resources hot relaod
-    </description>
+<project name="nuxeo-webengine-mobile" default="usage" basedir=".">
 
   <property file="build.properties"/>
 
-  <property name="app-deployed-location" location="${tomcat.location}/nxserver/web/root.war/modules/org.nuxeo.webengine.mobile"/>
-  <property name="nuxeo.war" location="${tomcat.location}/nxserver/nuxeo.war"/>
-  <property name="bundles-location" location="${tomcat.location}/nxserver/bundles"/>
-  <property name="version" value="0.2-SNAPSHOT"/>
+  <property name="mvn.opts" value="" />
+  <property name="tomcat.bundles.dir" location="${tomcat.dir}/nxserver/bundles"/>
+  <property name="tomcat.nuxeo.war.dir" location="${tomcat.dir}/nxserver/nuxeo.war"/>
+  <property name="tomcat.webengine.module.dir" location="${tomcat.dir}/nxserver/web/root.war/modules/org.nuxeo.webengine.mobile"/>
 
-  <target name="web" description="Deploy freemarker resources into the runnning server">
-    <echo>copy to ${app-deployed-location}/skin</echo>
-    <copy todir="${app-deployed-location}/skin">
+  <property name="marketplace.build.dir" value="target/marketplace" />
+  <property name="marketplace.bundles.build.dir" value="${marketplace.build.dir}/bundles" />
+
+
+  <condition property="osfamily-unix">
+    <os family="unix" />
+  </condition>
+  <condition property="osfamily-windows">
+    <os family="windows" />
+  </condition>
+
+  <target name="usage">
+    <echo message="usage: ant [build|deploy|web]" />
+    <echo message="ant build        => Build Nuxeo WebEngine Mobile" />
+    <echo message="ant deploy       => Build Nuxeo WebEngine Mobile and deploy it on a Tomcat instance" />
+    <echo message="ant web          => Copy web files to a live Tomcat" />
+    <echo message="ant marketplace  => Create the marketplace package QT_WriteOBJECT" />
+  </target>
+
+  <target name="build" depends="build-unix,build-windows" />
+  <target name="build-unix" if="osfamily-unix">
+    <exec executable="/usr/bin/mvn" failonerror="true">
+      <arg value="clean" />
+      <arg value="install" />
+      <arg value="${mvn.opts}" />
+    </exec>
+  </target>
+  <target name="build-windows" if="osfamily-windows">
+    <exec executable="cmd" failonerror="true">
+      <arg value="/c" />
+      <arg value="mvn.bat" />
+      <arg value="clean" />
+      <arg value="install" />
+      <arg value="${mvn.opts}" />
+    </exec>
+  </target>
+
+  <target name="deploy" depends="build" description="Deploy project ">
+    <copy todir="${tomcat.bundles.dir}" overwrite="true" flatten="true">
+      <fileset dir="${basedir}">
+        <include name="**/target/*.jar" />
+        <exclude name="**/target/*-sources.jar" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="web">
+    <copy todir="${tomcat.webengine.module.dir}">
       <fileset dir="src/main/resources/skin/"/>
     </copy>
-
-    <echo>copy to ${nuxeo.war}</echo>
-    <copy todir="${nuxeo.war}/">
-       <fileset dir="src/main/resources/web/nuxeo.war/"/>
-     </copy>
+    <copy todir="${tomcat.nuxeo.war.dir}">
+      <fileset dir="src/main/resources/web/nuxeo.war/"/>
+    </copy>
   </target>
 
-  <target name="install">
-      <exec executable="mvn">
-        <arg value="clean"/>
-        <arg value="install"/>
-        <arg value="-o"/>
-      </exec>
+  <target name="marketplace" depends="build">
+    <copy todir="${marketplace.build.dir}" overwrite="true" flatten="true">
+      <fileset dir="marketplace">
+      </fileset>
+    </copy>
+    <mkdir dir="${marketplace.bundles.build.dir}" />
+    <copy todir="${marketplace.bundles.build.dir}" overwrite="true" flatten="true">
+      <fileset dir="${basedir}">
+        <include name="**/target/*.jar" />
+        <exclude name="**/target/*-sources.jar" />
+      </fileset>
+    </copy>
+    <zip destfile="target/nuxeo-webengine-mobile-1.0.0.zip" basedir="${marketplace.build.dir}"/>
   </target>
-
-    <target name="deploy" depends="install" description="Deploy project into the server">
-        <copy todir="${bundles-location}" file="target/nuxeo-webengine-mobile-${version}.jar"/>
-    </target>
 
 </project>

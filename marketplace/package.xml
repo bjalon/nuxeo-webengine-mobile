@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package type="addon" name="nuxeo-webengine-mobile" version="1.0.0">
+  <title>Nuxeo WebEngine Mobile</title>
+  <description>Enable the Nuxeo WebEngine Mobile application</description>
+  <classifier>Open Source</classifier>
+  <home-page>https://github.com/bjalon/nuxeo-webengine-mobile</home-page>
+  <vendor>Nuxeo</vendor>
+  <platforms>
+    <platform>dm-5.4.1</platform>
+  </platforms>
+  <hotreload-support>true</hotreload-support>
+</package>

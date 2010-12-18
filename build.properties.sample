@@ -1,1 +1,3 @@
-tomcat.location=/opt/tomcat
+tomcat.dir=/opt/tomcat
+
+#mvn.opts=-o

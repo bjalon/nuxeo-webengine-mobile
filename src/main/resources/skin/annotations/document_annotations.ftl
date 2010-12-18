@@ -3,11 +3,11 @@
     There is no annotation
   </#if>
   <#list annotations as annotation>
-  <li class="nxDocumentItem">
-    <div>
+  <li class="annotation">
+    <div class="annotationHeader">
       ${annotation.creator} wrote:
     </div>
-    <div>${annotation.bodyAsText}</div>
+    <div class="annotationText">${annotation.bodyAsText}</div>
   </li>
   </#list>
 </ul>
