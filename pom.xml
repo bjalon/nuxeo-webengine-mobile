@@ -12,7 +12,7 @@
   <groupId>org.nuxeo.webengine.mobile</groupId>
   <artifactId>nuxeo-webengine-mobile</artifactId>
   <name>Nuxeo WebEngine Mobile</name>
-   <version>0.2-SNAPSHOT</version>
+   <version>1.1-SNAPSHOT</version>
 
   <dependencies>
     <dependency>
@@ -83,35 +83,6 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
-      </plugin>
       <!-- APT plugin for annotation preprocessing -->
       <plugin>
         <groupId>org.apache.myfaces.tobago</groupId>
@@ -128,5 +99,22 @@
       <!-- end APT plugin -->
     </plugins>
   </build>
+
+  <repositories>
+    <repository>
+      <id>public</id>
+      <url>http://maven.nuxeo.org/public</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>public-snapshot</id>
+      <url>http://maven.nuxeo.org/public-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
 </project>

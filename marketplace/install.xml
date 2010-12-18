@@ -1,5 +1,5 @@
 <install>
-  <copy file="${package.root}/bundles/nuxeo-webengine-mobile-0.2-SNAPSHOT.jar" tofile="${env.bundles}" overwrite="true" />
+  <copy file="${package.root}/bundles/nuxeo-webengine-mobile-1.1-SNAPSHOT.jar" tofile="${env.bundles}" overwrite="true" />
 
-  <deploy file="${env.bundles}/nuxeo-webengine-mobile-0.2-SNAPSHOT.jar" />
+  <deploy file="${env.bundles}/nuxeo-webengine-mobile-1.1-SNAPSHOT.jar" />
 </install>

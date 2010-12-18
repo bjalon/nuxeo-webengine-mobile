@@ -24,12 +24,12 @@
     <echo message="ant build        => Build Nuxeo WebEngine Mobile" />
     <echo message="ant deploy       => Build Nuxeo WebEngine Mobile and deploy it on a Tomcat instance" />
     <echo message="ant web          => Copy web files to a live Tomcat" />
-    <echo message="ant marketplace  => Create the marketplace package QT_WriteOBJECT" />
+    <echo message="ant marketplace  => Create the marketplace package" />
   </target>
 
   <target name="build" depends="build-unix,build-windows" />
   <target name="build-unix" if="osfamily-unix">
-    <exec executable="/usr/bin/mvn" failonerror="true">
+    <exec executable="mvn" failonerror="true">
       <arg value="clean" />
       <arg value="install" />
       <arg value="${mvn.opts}" />
@@ -75,7 +75,7 @@
         <exclude name="**/target/*-sources.jar" />
       </fileset>
     </copy>
-    <zip destfile="target/nuxeo-webengine-mobile-1.0.0.zip" basedir="${marketplace.build.dir}"/>
+    <zip destfile="target/nuxeo-webengine-mobile-1.1.0.zip" basedir="${marketplace.build.dir}"/>
   </target>
 
 </project>
