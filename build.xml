@@ -24,7 +24,7 @@
     <echo message="ant build        => Build Nuxeo WebEngine Mobile" />
     <echo message="ant deploy       => Build Nuxeo WebEngine Mobile and deploy it on a Tomcat instance" />
     <echo message="ant web          => Copy web files to a live Tomcat" />
-    <echo message="ant marketplace  => Create the marketplace package QT_WriteOBJECT" />
+    <echo message="ant marketplace  => Create the marketplace package" />
   </target>
 
   <target name="build" depends="build-unix,build-windows" />

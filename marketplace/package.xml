@@ -6,7 +6,7 @@
   <home-page>https://github.com/bjalon/nuxeo-webengine-mobile</home-page>
   <vendor>Nuxeo</vendor>
   <platforms>
-    <platform>dm-5.4.1</platform>
+    <platform>dm-5.4.0.1</platform>
   </platforms>
   <hotreload-support>true</hotreload-support>
 </package>
