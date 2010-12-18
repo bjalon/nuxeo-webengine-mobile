@@ -8,6 +8,10 @@
   <property name="tomcat.nuxeo.war.dir" location="${tomcat.dir}/nxserver/nuxeo.war"/>
   <property name="tomcat.webengine.module.dir" location="${tomcat.dir}/nxserver/web/root.war/modules/org.nuxeo.webengine.mobile"/>
 
+  <property name="marketplace.build.dir" value="target/marketplace" />
+  <property name="marketplace.bundles.build.dir" value="${marketplace.build.dir}/bundles" />
+
+
   <condition property="osfamily-unix">
     <os family="unix" />
   </condition>
@@ -17,9 +21,10 @@
 
   <target name="usage">
     <echo message="usage: ant [build|deploy|web]" />
-    <echo message="ant build    => Build Nuxeo WebEngine Mobile" />
-    <echo message="ant deploy   => Build Nuxeo WebEngine Mobile and deploy it on a Tomcat instance" />
-    <echo message="ant web      => Copy web files to a live Tomcat" />
+    <echo message="ant build        => Build Nuxeo WebEngine Mobile" />
+    <echo message="ant deploy       => Build Nuxeo WebEngine Mobile and deploy it on a Tomcat instance" />
+    <echo message="ant web          => Copy web files to a live Tomcat" />
+    <echo message="ant marketplace  => Create the marketplace package QT_WriteOBJECT" />
   </target>
 
   <target name="build" depends="build-unix,build-windows" />
@@ -43,8 +48,8 @@
   <target name="deploy" depends="build" description="Deploy project ">
     <copy todir="${tomcat.bundles.dir}" overwrite="true" flatten="true">
       <fileset dir="${basedir}">
-        <include name="*/target/*.jar" />
-        <exclude name="*/target/*-sources.jar" />
+        <include name="**/target/*.jar" />
+        <exclude name="**/target/*-sources.jar" />
       </fileset>
     </copy>
   </target>
@@ -56,6 +61,21 @@
     <copy todir="${tomcat.nuxeo.war.dir}">
       <fileset dir="src/main/resources/web/nuxeo.war/"/>
     </copy>
+  </target>
+
+  <target name="marketplace" depends="build">
+    <copy todir="${marketplace.build.dir}" overwrite="true" flatten="true">
+      <fileset dir="marketplace">
+      </fileset>
+    </copy>
+    <mkdir dir="${marketplace.bundles.build.dir}" />
+    <copy todir="${marketplace.bundles.build.dir}" overwrite="true" flatten="true">
+      <fileset dir="${basedir}">
+        <include name="**/target/*.jar" />
+        <exclude name="**/target/*-sources.jar" />
+      </fileset>
+    </copy>
+    <zip destfile="target/nuxeo-webengine-mobile-1.0.0.zip" basedir="${marketplace.build.dir}"/>
   </target>
 
 </project>

@@ -80,3 +80,12 @@ To avoid redeploying the whole project for each change when working with web fil
     Total time: 0 seconds
 
 You don't need to stop and restart your server when using that target.
+
+Build the marketplace package
+=============================
+
+To build the marketplace package associated to the Nuxeo WebEngine Mobile application, use:
+
+    $ ant marketplace
+
+A nuxeo-webengine-mobile-X.X.X.zip file will be generated in the `target/` folder. You can then upload it into your Nuxeo DM through the Admin Center (in the local packages tab of the Update Center).
