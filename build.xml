@@ -55,7 +55,7 @@
   </target>
 
   <target name="web">
-    <copy todir="${tomcat.webengine.module.dir}">
+    <copy todir="${tomcat.webengine.module.dir}/skin">
       <fileset dir="src/main/resources/skin/"/>
     </copy>
     <copy todir="${tomcat.nuxeo.war.dir}">
