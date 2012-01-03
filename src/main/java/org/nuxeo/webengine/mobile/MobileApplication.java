@@ -37,7 +37,8 @@ import com.sun.jersey.api.NotFoundException;
  *
  * @author <a href="mailto:bjalon@nuxeo.com">Benjamin JALON</a>
  */
-@WebObject(type = "mobile")
+@Path("/mobile")
+@WebObject(type = "MobileApplication")
 @Produces("text/html;charset=UTF-8")
 public class MobileApplication extends ModuleRoot {
 
@@ -57,11 +58,11 @@ public class MobileApplication extends ModuleRoot {
 
         if (initialURLRequested.contains("/nxpath/")) {
             int index_start = initialURLRequested.indexOf("nxpath");
-            String path = initialURLRequested.substring(index_start
+            String urlPath = initialURLRequested.substring(index_start
                     + "nxpath/default".length());
-            int index_end = path.indexOf("@");
-            path = path.substring(0, index_end);
-            doc = new MobileDocument(getContext(), path);
+            int index_end = urlPath.indexOf("@");
+            urlPath = urlPath.substring(0, index_end);
+            doc = new MobileDocument(getContext(), urlPath);
         }
 
         if (initialURLRequested.contains("/nxdoc/")) {

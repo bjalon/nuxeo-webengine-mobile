@@ -11,3 +11,4 @@ Nuxeo-Component: OSGI-INF/mobile-authentication-contrib.xml,
  OSGI-INF/mobile-core-types-contrib.xml,
  OSGI-INF/mobile-lifecycle-contrib.xml,
  OSGI-INF/mobile-ecm-types-contrib.xml
+Nuxeo-WebModule: org.nuxeo.ecm.webengine.app.WebEngineModule;name=mobile;extends=base;package=org/nuxeo/webengine/mobile/root
